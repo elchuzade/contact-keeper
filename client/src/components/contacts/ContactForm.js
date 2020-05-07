@@ -13,8 +13,9 @@ const ContactForm = () => {
 
   const { name, email, phone, type } = contact
 
-  const onChange = e =>
+  const onChange = e => {
     setContact({ ...contact, [e.target.name]: e.target.value })
+  }
 
   const onSubmit = e => {
     e.preventDefault()
@@ -25,16 +26,24 @@ const ContactForm = () => {
   return (
     <form onSubmit={onSubmit}>
       <h2 className='text-primary'>Add Contact</h2>
-      <input type='text' placeholder='Name' value={name} onChange={onChange} />
+      <input
+        type='text'
+        placeholder='Name'
+        name='name'
+        value={name}
+        onChange={onChange}
+      />
       <input
         type='email'
         placeholder='Email'
+        name='email'
         value={email}
         onChange={onChange}
       />
       <input
         type='text'
         placeholder='phone'
+        name='phone'
         value={phone}
         onChange={onChange}
       />
@@ -44,6 +53,7 @@ const ContactForm = () => {
         name='type'
         value='personal'
         checked={type === 'personal'}
+        onChange={onChange}
       />{' '}
       Personal{' '}
       <input
@@ -51,6 +61,7 @@ const ContactForm = () => {
         name='type'
         value='professional'
         checked={type === 'professional'}
+        onChange={onChange}
       />{' '}
       Professional{' '}
       <div>
